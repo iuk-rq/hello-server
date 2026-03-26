@@ -3,25 +3,22 @@ package com.stu.helloserver.interceptor;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
-
 import java.io.PrintWriter;
 
 public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
         String method = request.getMethod();
         String uri = request.getRequestURI();
 
 
         boolean isCreateUser = "POST".equalsIgnoreCase(method) && "/api/users".equals(uri);
-        boolean isGetUser = "GET".equalsIgnoreCase(method) && uri.startsWith("/api/users/");
 
-
-        if (isCreateUser || isGetUser) {
+        if (isCreateUser) {
             return true;
         }
+
 
         String token = request.getHeader("Authorization");
         if (token == null || token.isEmpty()) {
@@ -33,7 +30,6 @@ public class AuthInterceptor implements HandlerInterceptor {
             writer.close();
             return false;
         }
-
 
         return true;
     }
