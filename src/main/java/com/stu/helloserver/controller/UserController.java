@@ -5,6 +5,8 @@ import com.stu.helloserver.dto.UserDTO;
 import com.stu.helloserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/users")
@@ -29,5 +31,13 @@ public class UserController {
     @GetMapping("/{id}")
     public Result<String> getUser(@PathVariable("id") Long id) {
         return userService.getUserById(id);
+    }
+
+    // 4. 分页查询用户列表
+    @GetMapping("/page")
+    public Result<Object> getUserPage(
+            @RequestParam(defaultValue = "1") Integer pageNum,
+            @RequestParam(defaultValue = "5") Integer pageSize) {
+        return userService.getUserPage(pageNum, pageSize);
     }
 }

@@ -12,10 +12,14 @@ public class AuthInterceptor implements HandlerInterceptor {
         String method = request.getMethod();
         String uri = request.getRequestURI();
 
-
+        // 1. 放行：注册接口
         boolean isCreateUser = "POST".equalsIgnoreCase(method) && "/api/users".equals(uri);
 
-        if (isCreateUser) {
+        // 2. 放行：分页查询接口
+        boolean isUserPage = "GET".equalsIgnoreCase(method) && "/api/users/page".equals(uri);
+
+
+        if (isCreateUser || isUserPage) {
             return true;
         }
 

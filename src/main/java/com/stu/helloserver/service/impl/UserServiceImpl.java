@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -65,5 +66,11 @@ public class UserServiceImpl implements UserService {
         }
         // 3. 这里为了避免直接暴露密码，仅返回用户名演示
         return Result.success("查询成功，用户名：" + user.getUsername());
+    }
+    @Override
+    public Result<Object> getUserPage(Integer pageNum, Integer pageSize) {
+        Page<User> pageParam = new Page<>(pageNum, pageSize);
+        Page<User> resultPage = userMapper.selectPage(pageParam, null);
+        return Result.success(resultPage);
     }
 }
