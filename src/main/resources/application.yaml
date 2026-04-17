@@ -4,6 +4,11 @@ spring:
     username: postgres
     password: 123456
     driver-class-name: org.postgresql.Driver
+data:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
 
 mybatis-plus:
   configuration:

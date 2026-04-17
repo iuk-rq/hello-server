@@ -18,12 +18,18 @@ public class AuthInterceptor implements HandlerInterceptor {
         // 2. 放行：分页查询接口
         boolean isUserPage = "GET".equalsIgnoreCase(method) && "/api/users/page".equals(uri);
 
+        // 3. 放行：用户详情查询接口（GET）
+        boolean isGetDetail = "GET".equalsIgnoreCase(method) && uri.matches("/api/users/\\d+/detail");
 
-        if (isCreateUser || isUserPage) {
+        // 4. 放行用户信息更新接口（PUT）
+        boolean isUpdateDetail = "PUT".equalsIgnoreCase(method) && uri.matches("/api/users/\\d+/detail");
+
+        // 满足任意一个就放行
+        if (isCreateUser || isUserPage || isGetDetail || isUpdateDetail) {
             return true;
         }
 
-
+        // 其他接口需要 token
         String token = request.getHeader("Authorization");
         if (token == null || token.isEmpty()) {
             response.setContentType("application/json;charset=UTF-8");
