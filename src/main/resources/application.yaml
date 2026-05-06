@@ -4,11 +4,16 @@ spring:
     username: postgres
     password: 123456
     driver-class-name: org.postgresql.Driver
-data:
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    database: 0
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+
+security:
+  jwt:
+    secret: demo-jwt-secret-key-for-spring-security-2026
+    expiration-millis: 7200000
 
 mybatis-plus:
   configuration:
