@@ -1,6 +1,6 @@
 package com.stu.helloserver.security;
 
-import com.stu.helloserver.entity.User;
+import com.stu.helloserver.model.entity.User;
 import com.stu.helloserver.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,7 +1,7 @@
 package com.stu.helloserver.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.stu.helloserver.entity.User;
+import com.stu.helloserver.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

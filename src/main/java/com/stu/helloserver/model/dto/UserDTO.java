@@ -1,4 +1,4 @@
-package com.stu.helloserver.dto;
+package com.stu.helloserver.model.dto;
 
 import lombok.Data;
 

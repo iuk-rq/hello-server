@@ -1,10 +1,10 @@
 package com.stu.helloserver.controller;
 
 import com.stu.helloserver.common.Result;
-import com.stu.helloserver.dto.UserDTO;
-import com.stu.helloserver.entity.UserInfo;
+import com.stu.helloserver.model.dto.UserDTO;
+import com.stu.helloserver.model.entity.UserInfo;
 import com.stu.helloserver.service.UserService;
-import com.stu.helloserver.vo.UserDetailVO;
+import com.stu.helloserver.model.vo.UserDetailVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

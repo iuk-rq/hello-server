@@ -1,4 +1,4 @@
-package com.stu.helloserver.vo;
+package com.stu.helloserver.model.vo;
 
 import lombok.Data;
 
