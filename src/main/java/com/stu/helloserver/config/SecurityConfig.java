@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/api/chat").permitAll()
                         .anyRequest().authenticated()
                 )
                 // 2. 把 JWT 过滤器加在 UsernamePasswordAuthenticationFilter 前面

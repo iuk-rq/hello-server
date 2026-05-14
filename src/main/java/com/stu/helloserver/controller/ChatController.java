@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/chat")
@@ -20,8 +21,8 @@ public class ChatController {
     }
 
     @PostMapping
-    public Result<ChatResponseVO> chat(@RequestBody ChatRequestDTO dto) {
-        String answer = chatService.chat(dto.getMessage());
-        return Result.success(new ChatResponseVO(dto.getMessage(), answer));
+    public Result<ChatResponseVO> chat(@RequestBody ChatRequestDTO requestDTO) {
+        ChatResponseVO responseVO = chatService.chat(requestDTO);
+        return Result.success(responseVO);
     }
 }
